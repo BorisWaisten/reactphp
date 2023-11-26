@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  background-color: #f5f5f5; /* Un color de fondo suave */
+  padding: 20px; /* Agregamos un poco de espacio alrededor del contenido */
+}
+
+/* Estilo para los títulos */
+h1 {
+  color: #3498db; /* Azul brillante */
+}
+
+/* Estilo para el texto común */
+p {
+  color: #2ecc71; /* Verde esmeralda */
+}
+
+/* Estilo para botones o enlaces */
+button, a {
+  background-color: #e74c3c; /* Rojo intenso */
+  color: #fff; /* Texto blanco */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Esquinas redondeadas */
+  cursor: pointer; /* Cambia el cursor al pasar sobre él */
+  margin: 5px; /* Margen externo */
+}
+
+/* Efecto al pasar el ratón sobre los botones o enlaces */
+button:hover, a:hover {
+  background-color: #c0392b; /* Rojo más oscuro al pasar el ratón */
+}
