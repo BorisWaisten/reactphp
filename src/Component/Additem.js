@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,8 +7,7 @@ function AddItem() {
     image: '',
     price: '',
     description: '',
-    title: '',
-    status: '', // Asumo que también quieres mantener el campo de estado
+    title: ''
   });
   const [message, setMessage] = useState('');
 
@@ -19,22 +17,42 @@ function AddItem() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      image: formValue.image,
-      price: formValue.price,
-      description: formValue.description,
-      title: formValue.title,
-      status: formValue.status,
-    };
-    const res = await axios.post("http://localhost/reactcrudphp/api/item.php", formData);
 
-    if (res.data.success) {
-      setMessage(res.data.success);
-      setTimeout(() => {
-        navigate('/itemlist');
-      }, 2000);
+    const formData = {
+      imagen: formValue.image,
+      precio: formValue.price,
+      descripcion: formValue.description,
+      titulo: formValue.title,
+    };
+
+    try {
+      const res = await fetch("http://localhost:80/proyectophp/index.php", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        mode: 'cors', // Agrega esta línea
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setMessage(data.status === 1 ? data.message : 'Error al añadir el ítem');
+        if (data.status === 1) {
+          setTimeout(() => {
+            navigate('/');
+          }, 2000);
+        }
+      } else {
+        console.error('Error de red:', res.statusText);
+        setMessage('Error de red al enviar el formulario');
+      }
+    } catch (error) {
+      console.error('Error de red:', error);
+      setMessage('Error de red al enviar el formulario');
     }
   };
+
 
   return (
     <React.Fragment>
@@ -93,24 +111,9 @@ function AddItem() {
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-2">Status</label>
-                <div className="col-sm-10">
-                  <select
-                    name="status"
-                    className="form-control"
-                    value={formValue.status}
-                    onChange={handleInput}
-                  >
-                    <option value="">--Select Status--</option>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
-                  </select>
-                </div>
-              </div>
-              <div className="mb-3 row">
                 <label className="col-sm-2"></label>
                 <div className="col-sm-10">
-                  <button name="submit" className="btn btn-success">
+                  <button type="submit" className="btn btn-success">
                     Submit
                   </button>
                 </div>
