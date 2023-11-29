@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Proyecto React Php
+El proyecto se encuentra realizado con las siguientes tecnologias:
+Front-end:React
+Backend:Php,mysql
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pasos para correr el proyecto:
 
-## Available Scripts
+### Backend
+Para poder ejecutar Backend deberan descargar las siguientes herramientas
+XAMPP : https://www.apachefriends.org/es/download.html
+Esta herramienta es la que me permitira correr el mysql en el cual tendremos que crear la base de datos
+Una vez instalada la herramienta necesitamos ir a la ubicacion donde se guardo la herramienta y dirigirse hacia el sig documento:
 
-In the project directory, you can run:
+### xampp/htdocs
+
+En este archivo deberemos guardar la carpeta proyectophp que se encuentra en el proyecto reactphp.
+Una vez realizado este paso, se tendra que haber instalado el XAMPP Control Panel:
+Debemos abrir el control de panel y nos apareceran dos modulos importantes:
+
+### Apache y MySql 
+
+En estos dos modulos me aparecera la opcion darle start, le daremos start a los dos modulos,
+Una vez en verde los dos modulos, en el modulo MySql clikearemos la opcion admin,
+Esto me abrira el sig localhost:
+
+### localhost/phpmysql
+
+En este local host crearemos nuestra base de datos con la sig informacion:
+Base de datos: reactphp
+Tabla de BD: items
+Campos de la tabla :
+  Nombre	      Tipo	Cotejamiento	      Atributos	Nulo	Predeterminado	Extra	
+1	id(key)	      int(11)			                         No	   Ninguna		    AUTO_INCREMENT		
+
+2	titulo	      varchar(20)			                     No	   Ninguna				
+
+3	descripcion	  text	                  		         No	   Ninguna			
+
+4	precio	      decimal(20,0)			                   No	   Ninguna
+
+5	imagen	      varchar(255)                         No	   Ninguna
+                Tipo de medio: image/jpeg						
+
+Una vez realizado los consiguientes pasos, debremos correr el front-end
+
+### Front-end
+
+En la terminal del directorio del proyecto podes correr 
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ejecuta la aplicación en modo de desarrollo.
+Abra [http://localhost:3000](http://localhost:3000) para verlo en su navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
