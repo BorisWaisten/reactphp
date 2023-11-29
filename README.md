@@ -40,8 +40,7 @@ Nombre	      Tipo	Nulo	Predeterminado	Extra
 
 4	precio	      decimal(20,0)			                   No	   Ninguna
 
-5	imagen	      varchar(255)                         No	   Ninguna
-                Tipo de medio: image/jpeg						
+5	imagen	      (varchar(255)                       No	   Ninguna Tipo de medio: image/jpeg						
 
 Una vez realizado los consiguientes pasos, debremos correr el front-end
 
