@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import UpdateItem from "./UpdateItem";
 
 function Home() {
   const [items, setItems] = useState([]);
-  const [editingItem, setEditingItem] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     fetchData();
@@ -18,24 +18,6 @@ function Home() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
-
-  // Definimos handleSaveEdit como una función global
-  window.handleSaveEdit = async () => {
-    try {
-      // Lógica de actualización aquí
-      console.log("Item actualizado correctamente");
-
-      // Actualiza la lista después de la edición
-      fetchData();
-      setEditingItem(null);
-    } catch (error) {
-      console.error("Error updating item:", error);
-    }
-  };
-
-  const handleCancelEdit = () => {
-    setEditingItem(null);
   };
 
   const handleDelete = async (id) => {
@@ -56,55 +38,69 @@ function Home() {
   const tableCellStyle = {
     padding: '8px',
     textAlign: 'left',
+    whiteSpace: 'pre-wrap', // Permite que el texto se ajuste y se rompa en nuevas líneas
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
-    <React.Fragment>
-      <div style={{ textAlign: 'center' }}>
-        <h2>Items</h2>
-        <table style={{ margin: 'auto', width: '80%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #ddd' }}>
-              <th style={tableCellStyle}>Titulo</th>
-              <th style={tableCellStyle}>Descripcion</th>
-              <th style={tableCellStyle}>Precio (dolares)</th>
-              <th style={tableCellStyle}>Imagen</th>
-              <th style={tableCellStyle}>Acciones</th>
+    <div className="container mt-4">
+      <h2 className="text-center mb-4">Items</h2>
+      <table className="table table-bordered table-striped" style={{ tableLayout: 'fixed' }}>
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Precio (dolares)</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentItems && currentItems.map((item) => (
+            <tr key={item.id}>
+              <td>{item.titulo}</td>
+              <td style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.descripcion}</td>
+              <td>{item.precio}</td>
+              <td>
+                <img src={item.imagen} alt={`Imagen de ${item.titulo}`} style={{ width: "100%", height: "auto", maxWidth: "150px", maxHeight: "150px" }} />
+              </td>
+              <td>
+                <Link
+                  to={{ pathname: `/edit/${item.id}`, state: { itemData: item } }}
+                  className="btn btn-primary me-2"
+                >
+                  Editar
+                </Link>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  Eliminar
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {items && items.map((item) => (
-              <tr key={item.id} style={{ borderBottom: '1px solid #ddd' }}>
-                <td style={tableCellStyle}>{item.titulo}</td>
-                <td style={tableCellStyle}>{item.descripcion}</td>
-                <td style={tableCellStyle}>{item.precio}</td>
-                <td style={tableCellStyle}>
-                  <img src={item.imagen} alt={`Imagen de ${item.titulo}`} style={{ maxWidth: "150px", maxHeight: "150px" }} />
-                </td>
-                <td style={tableCellStyle}>
-                  <Link
-                    to={{
-                      pathname: `/edit/${item.id}`,
-                      state: { itemData: item },
-                    }}
-                    style={{ marginRight: "20px", border: "1px solid #ccc", borderRadius: "5px", padding: "5px 10px" }}
-                  >
-                    Editar
-                  </Link>
-                  <button
-                    style={{ marginRight: "20px", border: "1px solid #ccc", borderRadius: "5px", padding: "5px 10px" }}
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
+      <div className="text-center">
+        {Array.from({ length: Math.ceil(items.length / itemsPerPage) }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className="btn btn-secondary me-2"
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
-      {editingItem && <UpdateItem onCancel={handleCancelEdit} />}
-    </React.Fragment>
+    </div>
   );
 }
 

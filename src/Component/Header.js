@@ -18,7 +18,7 @@ function Header() {
                 <NavLink to="/" className="nav-link" aria-current="page">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/additem" className="nav-link">Add item</NavLink>
+                <NavLink to="/additem" className="nav-link" aria-current="page">Agregar item</NavLink>
               </li>
             </ul>
           </div>
