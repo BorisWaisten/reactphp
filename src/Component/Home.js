@@ -35,11 +35,6 @@ function Home() {
     }
   };
 
-  const tableCellStyle = {
-    padding: '8px',
-    textAlign: 'left',
-    whiteSpace: 'pre-wrap', // Permite que el texto se ajuste y se rompa en nuevas líneas
-  };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;

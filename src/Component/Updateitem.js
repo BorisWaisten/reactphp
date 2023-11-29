@@ -84,13 +84,6 @@ const UpdateItem = (props) => {
     }
   };
 
-  const buttonStyle = {
-    marginRight: "20px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    padding: "5px 10px",
-  };
-
   return (
     <div className="container mt-4">
       <h5 className="mb-4">Editar Item</h5>
