@@ -42,7 +42,7 @@ Nombre	      Tipo	Nulo	Predeterminado	Extra
 
 5	imagen	      (varchar(255)                       No	   Ninguna Tipo de medio: image/jpeg						
 
-Una vez realizado los consiguientes pasos, debremos correr el front-end
+Una vez realizado los consiguientes pasos, deberemos correr el front-end
 
 ### Front-end
 
