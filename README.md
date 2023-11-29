@@ -30,7 +30,7 @@ Base de datos: reactphp
 Tabla de BD: items
 Campos de la tabla :
 
-Nombre	      Tipo	Cotejamiento	      Atributos	Nulo	Predeterminado	Extra	
+Nombre	      Tipo	Nulo	Predeterminado	Extra	
 
 1	id(key)	      int(11)			                         No	   Ninguna		    AUTO_INCREMENT		
 
