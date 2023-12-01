@@ -48,6 +48,10 @@ Una vez realizado los consiguientes pasos, deberemos correr el front-end
 
 En la terminal del directorio del proyecto podes correr 
 
+### `npm install`
+
+y luego 
+
 ### `npm start`
 
 Ejecuta la aplicación en modo de desarrollo.
